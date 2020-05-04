@@ -1,0 +1,2 @@
+class Tehillim < ApplicationRecord
+end
