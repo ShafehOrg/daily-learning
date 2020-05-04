@@ -6,6 +6,8 @@ class CreatePesukim < ActiveRecord::Migration[5.2]
       t.string :unkelos, null: false
       t.integer :perek_id, not_null: true
 
+      t.index :perek_id
+
       t.timestamps
     end
   end

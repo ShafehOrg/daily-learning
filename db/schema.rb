@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_145958) do
     t.integer "perek_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["perek_id"], name: "index_pesukim_on_perek_id"
   end
 
   create_table "sections", force: :cascade do |t|
