@@ -1,0 +1,1 @@
+json.extract! section, :title_en, :title_he, :title_he_tr, :description
