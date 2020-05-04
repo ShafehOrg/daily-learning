@@ -1,0 +1,2 @@
+class Pasuk < ApplicationRecord
+end
