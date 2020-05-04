@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_143110) do
+ActiveRecord::Schema.define(version: 2020_05_04_144028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aliyos", force: :cascade do |t|
+    t.integer "aliyah_number", null: false
+    t.integer "parsha_id"
+    t.integer "start_perek_id"
+    t.integer "start_pasuk_id"
+    t.integer "end_perek_id"
+    t.integer "end_pasuk_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parsha_id"], name: "index_aliyos_on_parsha_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title_en", null: false
