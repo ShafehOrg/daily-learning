@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.all
-    render :index
+    render json: ["Bad Request"], status: 400
   end
 
   def create
