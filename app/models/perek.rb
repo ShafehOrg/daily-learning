@@ -1,0 +1,2 @@
+class Perek < ApplicationRecord
+end
