@@ -1,0 +1,2 @@
+class Parsha < ApplicationRecord
+end
