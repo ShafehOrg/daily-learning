@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :sections, only: [:index, :show]
+    resources :books, only: [:index, :show]
   end
 end

@@ -12,4 +12,6 @@
 #  updated_at  :datetime         not null
 #
 class Book < ApplicationRecord
+  belongs_to :section
+  has_many :perakim
 end

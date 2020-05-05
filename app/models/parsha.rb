@@ -11,4 +11,5 @@
 #  updated_at  :datetime         not null
 #
 class Parsha < ApplicationRecord
+  has_many :aliyos
 end

@@ -1,0 +1,1 @@
+json.extract! book, :id, :title_en, :title_he, :title_he_tr, :description, :section_id

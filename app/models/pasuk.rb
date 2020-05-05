@@ -11,4 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Pasuk < ApplicationRecord
+  belongs_to :perek
+  belongs_to :aliya_pesukim, class_name: :AliyaPasuk
+  has_many :aliyos, through: :aliya_pesukim
 end

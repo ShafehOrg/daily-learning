@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_150517) do
+ActiveRecord::Schema.define(version: 2020_05_04_215809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aliya_pesukim", force: :cascade do |t|
+    t.bigint "aliya_id"
+    t.bigint "pasuk_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aliya_id"], name: "index_aliya_pesukim_on_aliya_id"
+    t.index ["pasuk_id"], name: "index_aliya_pesukim_on_pasuk_id"
+  end
 
   create_table "aliyos", force: :cascade do |t|
     t.integer "aliyah_number", null: false

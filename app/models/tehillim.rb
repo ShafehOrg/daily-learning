@@ -12,4 +12,5 @@
 #  updated_at     :datetime         not null
 #
 class Tehillim < ApplicationRecord
+  # hardcode the 31 rows
 end
