@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_215809) do
+ActiveRecord::Schema.define(version: 2020_05_05_232946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_215809) do
   create_table "aliyos", force: :cascade do |t|
     t.integer "aliyah_number", null: false
     t.integer "parsha_id"
-    t.integer "start_perek_id"
-    t.integer "start_pasuk_id"
-    t.integer "end_perek_id"
-    t.integer "end_pasuk_id"
+    t.integer "start_perek"
+    t.integer "start_pasuk"
+    t.integer "end_perek"
+    t.integer "end_pasuk"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parsha_id"], name: "index_aliyos_on_parsha_id"
@@ -85,10 +85,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_215809) do
 
   create_table "tehillim", force: :cascade do |t|
     t.integer "day_number", null: false
-    t.integer "start_perek_id"
-    t.integer "start_pasuk_id"
-    t.integer "end_perek_id"
-    t.integer "end_pasuk_id"
+    t.integer "start_perek"
+    t.integer "start_pasuk"
+    t.integer "end_perek"
+    t.integer "end_pasuk"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
