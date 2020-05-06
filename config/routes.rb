@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :sections, only: [:index, :show]
     resources :books, only: [:index, :show]
   end
+
+  root to: 'static_pages#root'
 end
