@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
     resources :sections, only: [:index, :show]
     resources :books, only: [:index, :show]
+
+    get '/:book_id/perakim', to: 'perakim#index', as: 'book_perakim'
+    get '/:book_id/:perek_id', to: 'perakim#show', as: 'book_perek'
+    get '/:book_id/:perek_id/pesukim', to: 'pesukim#index', as: 'book_perek_pesukim'
+    get '/:book_id/:perek_id/:id', to: 'pesukim#show', as: 'book_perek_pasuk'
   end
 
   root to: 'static_pages#root'

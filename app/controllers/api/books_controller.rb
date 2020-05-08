@@ -12,7 +12,7 @@ class Api::BooksController < ApplicationController
       @book = Book.find_by(id: params[:id])
       render :show
     else 
-      @book = Book.find_by(title_he_tr: params[:id].capitalize)
+      @book = Book.find_by(title_he_tr: Book.find_title_he_tr(params[:id]))
       if @book
         render :show
       else

@@ -1,0 +1,1 @@
+json.extract! pasuk, :number, :text_he
