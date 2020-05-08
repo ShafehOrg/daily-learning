@@ -1,7 +1,6 @@
 Section.delete_all
 Book.delete_all
 Parsha.delete_all
-Perek.delete_all
 Pasuk.delete_all
 Aliya.delete_all
 
@@ -63,11 +62,14 @@ bereishis = Parsha.create(
   title_en: "Genesis", title_he: "בראשית", title_he_tr: "Bereishis", description: "The parsha of Bereishis"
 )
 
-# Perek
-perek = Perek.create(perek_number: 1, book_id: seferBereishit.id )
-
 # Pasuk
-pasuk = Pasuk.create(text_he: "בראשית בראשית", text_en: "Bereishis Bereishis", unkelos: "בראשית Bereishis", perek_id: perek.id)
+
+records = JSON.parse(File.read('tanach.json'))
+records.each do |record|
+  book = Book.find_by(title_en: record['seferEn'])
+  Pasuk.create!(text_he: record['txt'], text_en: "not available", unkelos: "not available", number: record['pasuknum'], perek: record['perekNum'], book_id: book.id)
+end
+
 
 # Aliya
 aliya = Aliya.create(aliyah_number: 1, parsha_id: bereishis.id)

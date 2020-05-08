@@ -6,10 +6,11 @@
 #  text_he    :string           not null
 #  text_en    :string           not null
 #  unkelos    :string           not null
-#  perek_id   :integer
+#  book_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  aliya_id   :integer
+#  number     :integer
+#  perek      :integer
 #
 
 # This model initially had no columns defined. If you add columns to the

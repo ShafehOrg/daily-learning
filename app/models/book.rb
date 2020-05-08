@@ -13,5 +13,5 @@
 #
 class Book < ApplicationRecord
   belongs_to :section
-  has_many :perakim
+  has_many :pesukim
 end
