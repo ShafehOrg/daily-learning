@@ -1,11 +1,6 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
-import { Button } from "@material-ui/core";
+import { AppBar, CssBaseline, Toolbar, Typography, Link, Button, List, ListItem, ListItemText } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -52,11 +47,22 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
+  root: {
+    width: "100%",
+    backgroundColor: theme.palette.background.paper,
+  },
 }));
+
 
 
 export default function App() {
   const classes = useStyles();
+
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <>
@@ -74,7 +80,7 @@ export default function App() {
             noWrap
             className={classes.toolbarTitle}
           >
-            Shafeh
+            Shafeh: Daily Learning
           </Typography>
           <nav>
             {/* <Link
@@ -96,6 +102,23 @@ export default function App() {
           </Button>
         </Toolbar>
       </AppBar>
+
+      <List component="nav" className={classes.root}>
+        <ListItem
+          button
+          selected={selectedIndex === 0}
+          onClick={(event) => handleListItemClick(event, 0)}
+        >
+          <ListItemText primary="One" />
+        </ListItem>
+        <ListItem
+          button
+          selected={selectedIndex === 1}
+          onClick={(event) => handleListItemClick(event, 1)}
+        >
+          <ListItemText primary="Two" />
+        </ListItem>
+      </List>
     </>
   );
 }
