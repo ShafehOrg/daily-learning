@@ -14,6 +14,6 @@
 #
 class Aliya < ApplicationRecord
   belongs_to :parsha
-  belongs_to :aliya_pesukim, class_name: :AliyaPasuk
+  belongs_to :aliya_pesukim, class_name: :AliyaPasuk, optional: true
   has_many :pesukim, through: :aliya_pesukim
 end
