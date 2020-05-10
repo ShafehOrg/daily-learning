@@ -15,7 +15,7 @@
 class Aliya < ApplicationRecord
   belongs_to :parsha
   belongs_to :aliya_pesukim, class_name: :AliyaPasuk, optional: true
-  # has_many :pesukim, through: :aliya_pesukim
+  has_many :pesukim, through: :aliya_pesukim
 
   def text(book_id)
     Pasuk
@@ -26,6 +26,7 @@ class Aliya < ApplicationRecord
       pesukim.perek = ? AND pesukim.number <= ?', 
       self.start_perek, self.start_pasuk, self.start_perek, self.end_perek, self.end_perek, self.end_pasuk
       )
+      .order(:perek, :number)
       .group_by(&:perek)
   end
 end
