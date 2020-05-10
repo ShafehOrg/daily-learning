@@ -14,6 +14,7 @@
 class Book < ApplicationRecord
   belongs_to :section
   has_many :pesukim
+  has_many :parshios
 
   def self.find_title_he_tr(query)
     query.split.map(&:capitalize).join(' ')

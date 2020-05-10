@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
     resources :sections, only: [:index, :show]
     resources :books, only: [:index, :show]
+    resources :parshios, only: [:index, :show]
 
     get '/:book_id/perakim', to: 'perakim#index', as: 'book_perakim'
     get '/:book_id/:perek_id', to: 'perakim#show', as: 'book_perek'

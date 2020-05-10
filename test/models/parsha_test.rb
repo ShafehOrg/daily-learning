@@ -9,6 +9,7 @@
 #  description :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  books_id    :bigint
 #
 require 'test_helper'
 

@@ -15,5 +15,17 @@
 class Aliya < ApplicationRecord
   belongs_to :parsha
   belongs_to :aliya_pesukim, class_name: :AliyaPasuk, optional: true
-  has_many :pesukim, through: :aliya_pesukim
+  # has_many :pesukim, through: :aliya_pesukim
+
+  def text(book_id)
+    Pasuk
+      .select(:id,:text_he, :number, :perek)
+      .where('pesukim.book_id = ?', book_id)
+      .where('pesukim.perek = ? AND pesukim.number >= ? OR  
+      pesukim.perek > ? AND pesukim.perek < ? OR
+      pesukim.perek = ? AND pesukim.number <= ?', 
+      self.start_perek, self.start_pasuk, self.start_perek, self.end_perek, self.end_perek, self.end_pasuk
+      )
+      .group_by(&:perek)
+  end
 end
