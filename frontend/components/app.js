@@ -1,6 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, CssBaseline, Toolbar, Typography, Link, Button, List, ListItem, ListItemText } from "@material-ui/core";
+import { 
+  makeStyles 
+} from "@material-ui/core/styles";
+import { 
+  AppBar, 
+  CssBaseline, 
+  Toolbar, 
+  Link, 
+  Button 
+} from "@material-ui/core";
+import { Switch, Route } from "react-router-dom";
+import SectionsList from "./sections_list";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -53,8 +63,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function App() {
   const classes = useStyles();
 
@@ -74,23 +82,24 @@ export default function App() {
         className={classes.appBar}
       >
         <Toolbar className={classes.toolbar}>
-          <Typography
+          <Link
             variant="h6"
             color="inherit"
             noWrap
+            href="#"
             className={classes.toolbarTitle}
           >
             Shafeh: Daily Learning
-          </Typography>
+          </Link>
           <nav>
-            {/* <Link
+            <Link
               variant="button"
               color="textPrimary"
-              href="#"
+              href="https://www.shafeh.org/Shnayim-Mikra/"
               className={classes.link}
             >
-              Support
-            </Link> */}
+              Shnayim Mikra
+            </Link>
           </nav>
           <Button
             href="#/login"
@@ -102,23 +111,36 @@ export default function App() {
           </Button>
         </Toolbar>
       </AppBar>
-
-      <List component="nav" className={classes.root}>
-        <ListItem
-          button
-          selected={selectedIndex === 0}
-          onClick={(event) => handleListItemClick(event, 0)}
-        >
-          <ListItemText primary="One" />
-        </ListItem>
-        <ListItem
-          button
-          selected={selectedIndex === 1}
-          onClick={(event) => handleListItemClick(event, 1)}
-        >
-          <ListItemText primary="Two" />
-        </ListItem>
-      </List>
+      <Switch>
+        <Route
+          path={"/"}
+          exact
+          render={() => {
+            return (
+              <Button
+                href="#/sections"
+                color="primary"
+                variant="outlined"
+                className={classes.link}
+              >
+                Sections
+              </Button>
+            );
+          }}
+        />
+        <Route
+          path={"/login"}
+          render={() => {
+            return <h1>Login</h1>;
+          }}
+        />
+        <Route
+          path={"/sections"}
+          render={() => {
+            return <SectionsList useStyles={useStyles} />;
+          }}
+        />
+      </Switch>
     </>
   );
 }
