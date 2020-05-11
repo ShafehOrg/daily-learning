@@ -17,8 +17,7 @@ export default function SectionsList(props) {
 
   return (
     <>
-      <CssBaseline />
-      <List component="nav" className={classes.root}>
+      <List component="nav">
         <ListItem
           button
           selected={selectedIndex === 0}
