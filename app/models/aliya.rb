@@ -21,12 +21,13 @@ class Aliya < ApplicationRecord
     Pasuk
       .select(:id,:text_he, :number, :perek)
       .where('pesukim.book_id = ?', book_id)
-      .where('(? < ? AND
+      .where('(
+        ? < ? AND
         pesukim.perek = ? AND pesukim.number >= ? OR  
       pesukim.perek > ? AND pesukim.perek < ? OR
       pesukim.perek = ? AND pesukim.number <= ?)
       OR
-      ( (pesukim.perek = ? AND pesukim.perek = ?) AND
+      ((pesukim.perek = ? AND pesukim.perek = ?) AND
       (pesukim.number >= ? AND pesukim.number <= ?))', 
       self.start_perek, self.end_perek, 
       self.start_perek, self.start_pasuk, 
