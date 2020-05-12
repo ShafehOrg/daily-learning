@@ -21,6 +21,8 @@ import {
   Hidden
 } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
+import { AuthRoute } from "../utils/route_util";
+
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 
 import SectionsList from "./sections_list";
@@ -85,7 +87,6 @@ const App = function(props) {
   };
 
   const handleListItemClick = (e, text) => {
-    debugger
     if (isWidthDown("sm", props.width)) handleDrawerToggle();
     links[text][0]
       ? history.push(links[text][1])
@@ -192,13 +193,9 @@ const App = function(props) {
               );
             }}
           />
-          <Route
+          <AuthRoute
             path={"/login"}
-            render={() => {
-              return (
-                <LogIn />
-              );
-            }}
+            component={() => <LogIn />}
           />
           <Route
             path={"/sections"}

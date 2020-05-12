@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -15,6 +16,7 @@ import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/session_actions";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -64,7 +66,13 @@ const SignIn = function(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.login(values)
+    /**
+     * if successful: 
+     *  redirect to / (AuthRoute)
+     * else: 
+     *  TODO: render errors
+     */
+    props.login(values);
   }
 
   return (
@@ -115,9 +123,6 @@ const SignIn = function(props) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
             </Grid>
             <Grid item>
               <Link href="#/signup" variant="body2">
@@ -131,7 +136,9 @@ const SignIn = function(props) {
   );
 }
 
-export default connect(
-  mstp,
-  mdtp
-)(SignIn);
+export default withRouter(
+  connect(
+    mstp,
+    mdtp
+  )(SignIn)
+);
