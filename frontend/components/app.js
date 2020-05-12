@@ -1,5 +1,5 @@
 import React from "react";
-import clsx from "clsx";
+import { useHistory } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import {
@@ -22,6 +22,7 @@ import {
 } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
 import SectionsList from "./sections_list";
+import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 
 const drawerWidth = 240;
 
@@ -30,20 +31,20 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
   },
   appBar: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
@@ -58,11 +59,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function App(props) {
-  const { window } = props;
+const App = function(props) {
+  const propWindow = props.window;
 
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory();
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -70,7 +73,22 @@ export default function App(props) {
   };
 
   const container =
-    window !== undefined ? () => window().document.body : undefined;
+    propWindow !== undefined ? () => propWindow().document.body : undefined;
+
+  const links = {
+    "Login": [true, "/login"],
+    "Torah": [true, "/torah"],
+    "Shnayim Mikra": [false, "https://www.shafeh.org/Shnayim-Mikra/"],
+    "Github": [false, "https://github.com/ShafehOrg/daily-learning"],
+  };
+
+  const handleListItemClick = (e, text) => {
+    debugger
+    if (isWidthDown("sm", props.width)) handleDrawerToggle();
+    links[text][0]
+      ? history.push(links[text][1])
+      : (window.open(links[text][1]));
+  };
 
   const drawer = (
     <>
@@ -78,7 +96,11 @@ export default function App(props) {
       <Divider />
       <List>
         {["Login", "Torah", "Shnayim Mikra", "Github"].map((text) => (
-          <ListItem button key={text}>
+          <ListItem
+            button
+            key={text}
+            onClick={(event) => handleListItemClick(event, text)}
+          >
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -120,7 +142,7 @@ export default function App(props) {
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
-        <Hidden smUp implementation="css">
+        <Hidden mdUp implementation="css">
           <Drawer
             container={container}
             variant="temporary"
@@ -137,7 +159,7 @@ export default function App(props) {
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
+        <Hidden smDown implementation="css">
           <Drawer
             classes={{
               paper: classes.drawerPaper,
@@ -185,3 +207,5 @@ export default function App(props) {
     </div>
   );
 }
+
+export default withWidth()(App);

@@ -7,7 +7,6 @@ import RootReducer from "../reducers/root_reducer";
 let middleware = [thunk];
 
 if (process.env.NODE_ENV !== "production") {
-  console.log(process.env.NODE_ENV);
   middleware = middleware.concat(logger);
 }
 
@@ -15,5 +14,7 @@ export default (preloadedState = {}) =>
   createStore(
     RootReducer,
     preloadedState,
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeWithDevTools(
+      applyMiddleware(...middleware)
+    )
   );
