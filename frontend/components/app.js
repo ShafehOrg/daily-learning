@@ -21,8 +21,10 @@ import {
   Hidden
 } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
-import SectionsList from "./sections_list";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
+
+import SectionsList from "./sections_list";
+import LogIn from "./log_in";
 
 const drawerWidth = 240;
 
@@ -193,7 +195,9 @@ const App = function(props) {
           <Route
             path={"/login"}
             render={() => {
-              return <h1>Login</h1>;
+              return (
+                <LogIn />
+              );
             }}
           />
           <Route
