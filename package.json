@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "webpack --mode=development --watch",
-    "postinstall": "webpack"
+    "postinstall": "webpack --mode=production"
   },
   "description": "daily learning",
   "version": "1.0.0",
