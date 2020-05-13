@@ -54,15 +54,12 @@ const mdtp = (dispatch) => {
 const SignIn = function(props) {
   const classes = useStyles();
 
+  const { values, setValues } = props;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
-
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
 
   const handleSubmit = e => {
     e.preventDefault();
