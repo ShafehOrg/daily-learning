@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
@@ -64,20 +64,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const App = function(props) {
-  const propWindow = props.window;
+  // const propWindow = props.window;
 
   const classes = useStyles();
   const theme = useTheme();
   const history = useHistory();
 
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  //App.js
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  //LogIn.js
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  const container =
-    propWindow !== undefined ? () => propWindow().document.body : undefined;
 
   const links = {
     "Login": [true, "/login"],
@@ -112,6 +116,7 @@ const App = function(props) {
   );
 
   return (
+    <>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
@@ -147,7 +152,7 @@ const App = function(props) {
       <nav className={classes.drawer} aria-label="mailbox folders">
         <Hidden mdUp implementation="css">
           <Drawer
-            container={container}
+            // container={container}
             variant="temporary"
             anchor={theme.direction === "rtl" ? "right" : "left"}
             open={mobileOpen}
@@ -174,6 +179,8 @@ const App = function(props) {
           </Drawer>
         </Hidden>
       </nav>
+    </div>
+
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
@@ -195,7 +202,7 @@ const App = function(props) {
           />
           <AuthRoute
             path={"/login"}
-            component={() => <LogIn />}
+            component={() => <LogIn values={values} setValues={setValues} />}
           />
           <Route
             path={"/sections"}
@@ -205,7 +212,7 @@ const App = function(props) {
           />
         </Switch>
       </main>
-    </div>
+  </>
   );
 }
 
