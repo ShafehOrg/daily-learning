@@ -1,60 +1,33 @@
-import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Grid,
-  Typography,
-  Container,
-} from "@material-ui/core";
-import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState, useEffect } from "react";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { loginUser } from "../actions/session_actions";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+import { loginUser, clearErrors } from "../actions/session_actions";
 
 const mstp = (state, ownProps) => {
   return {
-    todo: "hi"
+    errors: state.errors.login
   };
 };
 
 const mdtp = (dispatch) => {
   return {
-    login: user => dispatch(loginUser(user))
+    login: user => dispatch(loginUser(user)),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 
 
+const SignIn = props => {
+  useEffect(() => {
+    return function cleanup() {
+      props.clearErrors()
+    }
+  }, [])
 
-const SignIn = function(props) {
-  const classes = useStyles();
-
-  const { values, setValues } = props;
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -69,67 +42,43 @@ const SignIn = function(props) {
      * else: 
      *  TODO: render errors
      */
-    props.login(values);
+    props.login(values)
+      .then(() => props.clearErrors())
   }
 
+
+
+  const errors = props.errors;
+
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            onChange={handleInputChange}
-            value={values.email}
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            onChange={handleInputChange}
-            value={values.password}
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-            </Grid>
-            <Grid item>
-              <Link href="#/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
+      <div>
+        <h1>Sign in</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          required
+          id="email"
+          label="Email Address"
+          name="email"
+          type="email"
+          onChange={handleInputChange}
+          value={values.email}
+        />
+        <input
+          required
+          id="password"
+          label="Password"
+          name="password"
+          type="password"
+          onChange={handleInputChange}
+          value={values.password}
+        />
+        {errors ?? null}
+        <button>Sign In</button>
+          <Link to="/signup">
+            {"Don't have an account? Sign Up"}
+          </Link>
         </form>
       </div>
-    </Container>
   );
 }
 

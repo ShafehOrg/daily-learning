@@ -1,38 +1,14 @@
 import React from "react";
-import {
-  CssBaseline,
-  List,
-  ListItem,
-  ListItemText,
-} from "@material-ui/core";
 
-export default function SectionsList(props) {
-  const classes = props.useStyles();
+export default function SectionsList() {
 
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-  };
-
-  return (
-    <>
-      <List component="nav">
-        <ListItem
-          button
-          selected={selectedIndex === 0}
-          onClick={event => handleListItemClick(event, 0)}
-        >
-          <ListItemText primary="One" />
-        </ListItem>
-        <ListItem
-          button
-          selected={selectedIndex === 1}
-          onClick={event => handleListItemClick(event, 1)}
-        >
-          <ListItemText primary="Two" />
-        </ListItem>
-      </List>
-    </>
-  );
+  const list = [1,2].map(item => {
+    return (
+      <div key={item} className="list">
+        {item}
+      </div>
+    )
+  })
+  
+  return (<>{ list }</>);
 }
