@@ -249,7 +249,6 @@ var App = function App(props) {
     "Tikkun Korim": "/tikkun/online",
     "Github": "/github"
   };
-  debugger;
   var nav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "internal-links"
   }, Object.keys(links).map(function (text) {

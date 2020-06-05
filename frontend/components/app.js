@@ -42,7 +42,7 @@ const App = function(props) {
     "Tikkun Korim": "/tikkun/online",
     "Github": "/github",
   };
-  debugger
+
   const nav = (
     <nav>
       <div className="internal-links">{Object.keys(links).map(text => {
