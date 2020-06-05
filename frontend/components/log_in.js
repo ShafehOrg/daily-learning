@@ -36,17 +36,10 @@ const SignIn = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    /**
-     * if successful: 
-     *  redirect to / (AuthRoute)
-     * else: 
-     *  TODO: render errors
-     */
+    
     props.login(values)
       .then(() => props.clearErrors())
   }
-
-
 
   const errors = props.errors;
 

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
 import { Switch, Route, Link } from "react-router-dom";
 import { AuthRoute } from "../utils/route_util";
 
 import SectionsList from "./sections_list";
 import LogIn from "./log_in";
+import SignUp from "./sign_up";
 import { connect } from "react-redux";
 
 import { logoutUser } from "../actions/session_actions";
@@ -68,17 +68,17 @@ const App = function(props) {
             exact
             render={() => {
               return (
-                <Link
-                  to="/sections"
-                >
-                  Sections
-                </Link>
+                <Link to="/sections" >Sections</Link>
               );
             }}
           />
           <AuthRoute
             path={"/login"}
             component={() => <LogIn />}
+          />
+          <AuthRoute
+            path={"/signup"}
+            component={() => <SignUp />}
           />
           <Route
             path={"/sections"}
