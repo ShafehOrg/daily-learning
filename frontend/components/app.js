@@ -27,28 +27,37 @@ const mapDispatchToProps = (dispatch) => {
 const App = function(props) {
   
   const links = {
-    "Torah": [true, "/torah"],
+    "Chumash": [true, "/chumash"],
+    "Tehillim": [true, "/tehillim"],
+    "Tanya": [true, "/tanya"],
+    "Hayom Yom": [true, "/hayomyom"],
+    "Rambam": [true, "/rambam"],
     "Shnayim Mikra": [false, "https://www.shafeh.org/Shnayim-Mikra/"],
+    "Tikkun Korim": [false, "https://www.sharshi.com/tikkunkorim/"],
     "Github": [false, "https://github.com/ShafehOrg/daily-learning"],
   };
 
   const nav = (
-      <div>
+    <div>
       {Object.keys(links).map(text => {
-          return (
-            <div key={text}>
-              {text}
-            </div>
-          )}
-        )}
-      </div>
+        const [internal, link] = links[text];
+        return (
+          <div key={text}>
+            <Link to={`${link}`} > {text} </Link>
+          </div>
+        )
+      })}
+    </div>
   );
 
   const session = (
     <>
       { props.loggedIn ?
-        <button onClick={props.logOut}>  Log out  </button> :
-        <Link to="/login">  Login  </Link>
+        <Link to="/" onClick={props.logOut}>  Log out  </Link> :
+        <>
+          <Link to="/login">  Login  </Link>
+          <Link to="/signup">  Sign Up  </Link>
+        </>
       }
     </>
   )
