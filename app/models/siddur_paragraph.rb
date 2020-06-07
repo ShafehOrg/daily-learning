@@ -1,0 +1,2 @@
+class SiddurParagraph < ApplicationRecord
+end

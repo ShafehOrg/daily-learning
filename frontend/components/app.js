@@ -4,16 +4,19 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/session_actions";
 
 import { Switch, Route, Link } from "react-router-dom";
-import { AuthRoute } from "../utils/route_util";
-
-import SectionsList from "./sections_list";
-import LogIn from "./log_in";
-import SignUp from "./sign_up";
-import Chumash from "./chumash";
-import Tehillim from "./tehillim";
-import Tanya from "./tanya";
-import HayomYom from "./hayomyom";
-import Rambam from "./rambam";
+import { AuthRoute, ProtectedRoute } from "../utils/route_util";
+import {
+  SectionsList,
+  LogIn,
+  SignUp,
+  Chumash,
+  Tehillim,
+  Tanya,
+  HayomYom,
+  Rambam,
+  Siddur,
+  SiddurEdit,
+} from "./components";
 
 const mapStateToProps = (state) => {
   return {
@@ -120,9 +123,20 @@ const App = function(props) {
             path={"/rambam"}
             render={() => <Rambam />}
           />
+          <Route
+            exact
+            path={"/siddur"}
+            render={() => <Siddur />}
+          />
+          <ProtectedRoute
+            exact
+            path={"/siddur/edit"}
+            component={() => <SiddurEdit />}
+          />
           <Route exact path="/shnayimmikra" render={() => (window.location = "https://shafehorg.github.io/Shnayim-Mikra/")} />
           <Route exact path="/tikkun/online" render={() => (window.location = "https://www.sharshi.com/tikkunkorim/")} />
           <Route exact path="/github" render={() => (window.location = "https://github.com/ShafehOrg/daily-learning")} />
+          <Route component={() => 404} />
         </Switch>
       </main>
     </div>

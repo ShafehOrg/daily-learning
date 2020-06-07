@@ -16,8 +16,7 @@ const mdtp = (dispatch) => {
   };
 };
 
-
-const SignIn = props => {
+const LogIn = props => {
   useEffect(() => {
     return function cleanup() {
       props.clearErrors()
@@ -79,5 +78,5 @@ export default withRouter(
   connect(
     mstp,
     mdtp
-  )(SignIn)
+  )(LogIn)
 );

@@ -200,21 +200,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utils_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/route_util */ "./frontend/utils/route_util.js");
-/* harmony import */ var _sections_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sections_list */ "./frontend/components/sections_list.js");
-/* harmony import */ var _log_in__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./log_in */ "./frontend/components/log_in.js");
-/* harmony import */ var _sign_up__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./sign_up */ "./frontend/components/sign_up.js");
-/* harmony import */ var _chumash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./chumash */ "./frontend/components/chumash.js");
-/* harmony import */ var _tehillim__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./tehillim */ "./frontend/components/tehillim.js");
-/* harmony import */ var _tanya__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./tanya */ "./frontend/components/tanya.js");
-/* harmony import */ var _hayomyom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./hayomyom */ "./frontend/components/hayomyom.js");
-/* harmony import */ var _rambam__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./rambam */ "./frontend/components/rambam.js");
-
-
-
-
-
-
-
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components */ "./frontend/components/components.js");
 
 
 
@@ -289,42 +275,54 @@ var App = function App(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/login",
     component: function component() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_log_in__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["LogIn"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/signup",
     component: function component() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sign_up__WEBPACK_IMPORTED_MODULE_7__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["SignUp"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/sections",
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sections_list__WEBPACK_IMPORTED_MODULE_5__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["SectionsList"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/chumash",
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_chumash__WEBPACK_IMPORTED_MODULE_8__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["Chumash"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/tehillim",
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tehillim__WEBPACK_IMPORTED_MODULE_9__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["Tehillim"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/tanya",
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tanya__WEBPACK_IMPORTED_MODULE_10__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["Tanya"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/hayomyom",
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hayomyom__WEBPACK_IMPORTED_MODULE_11__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["HayomYom"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/rambam",
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rambam__WEBPACK_IMPORTED_MODULE_12__["default"], null);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["Rambam"], null);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+    exact: true,
+    path: "/siddur",
+    render: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["Siddur"], null);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    exact: true,
+    path: "/siddur/edit",
+    component: function component() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_5__["SiddurEdit"], null);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     exact: true,
@@ -343,6 +341,10 @@ var App = function App(props) {
     path: "/github",
     render: function render() {
       return window.location = "https://github.com/ShafehOrg/daily-learning";
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+    component: function component() {
+      return 404;
     }
   }))));
 };
@@ -367,6 +369,59 @@ __webpack_require__.r(__webpack_exports__);
 function Chumash() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Chumash");
 }
+
+/***/ }),
+
+/***/ "./frontend/components/components.js":
+/*!*******************************************!*\
+  !*** ./frontend/components/components.js ***!
+  \*******************************************/
+/*! exports provided: SectionsList, LogIn, SignUp, Chumash, Tehillim, Tanya, HayomYom, Rambam, Siddur, SiddurEdit */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _sections_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sections_list */ "./frontend/components/sections_list.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SectionsList", function() { return _sections_list__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _log_in__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./log_in */ "./frontend/components/log_in.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LogIn", function() { return _log_in__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _sign_up__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sign_up */ "./frontend/components/sign_up.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SignUp", function() { return _sign_up__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _chumash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chumash */ "./frontend/components/chumash.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Chumash", function() { return _chumash__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _tehillim__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tehillim */ "./frontend/components/tehillim.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tehillim", function() { return _tehillim__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _tanya__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tanya */ "./frontend/components/tanya.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tanya", function() { return _tanya__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _hayomyom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hayomyom */ "./frontend/components/hayomyom.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HayomYom", function() { return _hayomyom__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _rambam__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./rambam */ "./frontend/components/rambam.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Rambam", function() { return _rambam__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _siddur__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./siddur */ "./frontend/components/siddur.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Siddur", function() { return _siddur__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _siddur_edit__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./siddur_edit */ "./frontend/components/siddur_edit.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SiddurEdit", function() { return _siddur_edit__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***/ }),
 
@@ -443,7 +498,7 @@ var mdtp = function mdtp(dispatch) {
   };
 };
 
-var SignIn = function SignIn(props) {
+var LogIn = function LogIn(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     return function cleanup() {
       props.clearErrors();
@@ -496,7 +551,7 @@ var SignIn = function SignIn(props) {
   }, "Don't have an account? Sign Up")));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mstp, mdtp)(SignIn)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mstp, mdtp)(LogIn)));
 
 /***/ }),
 
@@ -540,6 +595,44 @@ function SectionsList() {
     }, item);
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, list);
+}
+
+/***/ }),
+
+/***/ "./frontend/components/siddur.js":
+/*!***************************************!*\
+  !*** ./frontend/components/siddur.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Siddur; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Siddur() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Siddur");
+}
+
+/***/ }),
+
+/***/ "./frontend/components/siddur_edit.js":
+/*!********************************************!*\
+  !*** ./frontend/components/siddur_edit.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SiddurEdit; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function SiddurEdit() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Siddur Edit");
 }
 
 /***/ }),
