@@ -6,17 +6,18 @@ class Api::SectionsController < ApplicationController
 
   def show
     query = params[:id]
-
+    
+    @section = nil
     if query.to_i > 0
       @section = Section.find_by(id: params[:id])
-      render :show
     else 
       @section = Section.find_by(title_he_tr: params[:id].capitalize)
-      if @section
-        render :show
-      else
-        render json: ["Not Found"], status: 404
-      end
+    end
+
+    if @section
+      render :show
+    else
+      render json: ["Not Found"], status: 404
     end
   end
 end
