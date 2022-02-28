@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - ruby-2.7.3
 env:
   AZURE_WEBAPP_NAME: shafeh   # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
@@ -21,13 +22,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm, bundle install
+    - name: npm install
       run: |
-        # Build and test the project, then
-        # deploy to Azure Web App.
         npm install
-        # bundle install
-      working-directory: my-app-path
+      working-directory: .
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with: 
