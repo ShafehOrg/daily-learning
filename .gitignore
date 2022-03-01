@@ -27,3 +27,6 @@
 /config/master.key
 app/assets/javascripts/bundle.js
 app/assets/javascripts/bundle.js.map
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
