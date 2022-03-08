@@ -30,3 +30,7 @@ app/assets/javascripts/bundle.js.map
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+bundle.js
+bundle.js.map
+bundle.js.LICENSE.txt

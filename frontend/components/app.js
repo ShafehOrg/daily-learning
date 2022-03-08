@@ -1,8 +1,5 @@
 import React from "react";
 
-import { connect } from "react-redux";
-import { logoutUser } from "../actions/session_actions";
-
 import { Switch, Route, Link } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../utils/route_util";
 import {
@@ -17,20 +14,9 @@ import {
   Siddur,
   SiddurEdit,
 } from "./components";
+import { Header } from "./header";
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: Boolean(state.session.currentUser.id)
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logOut: () => dispatch(logoutUser())
-  };
-};
-
-const App = function(props) {
+const App = (props) => {
   
   const links = {
     "Chumash": "/chumash",
@@ -41,9 +27,18 @@ const App = function(props) {
   };
 
   const externalLinks = {
-    "Shnayim Mikra": "/shnayimmikra",
-    "Tikkun Korim": "/tikkun/online",
-    "Github": "/github",
+    "Shnayim Mikra": {
+      path: "/shnayimmikra",
+      url: "https://shafehorg.github.io/Shnayim-Mikra/",
+    },
+    "Tikkun Korim": {
+      path: "/tikkun/online",
+      url: "https://www.sharshi.com/tikkunkorim/",
+    },
+    "Github": {
+      path: "/github",
+      url: "https://github.com/ShafehOrg/daily-learning",
+    },
   };
 
   const nav = (
@@ -51,7 +46,7 @@ const App = function(props) {
       <div className="internal-links">{Object.keys(links).map(text => {
         const link = links[text];
         return <div key={text}>
-          <Link to={`${link}`} > {text} </Link>
+          <Link to={`${ link }`} > { text } </Link>
         </div>
       })}</div>
       <br />
@@ -59,28 +54,15 @@ const App = function(props) {
       <div className="external-links">{Object.keys(externalLinks).map(text => {
         const link = externalLinks[text];
         return <div key={text}>
-          <Link to={`${link}`} > {text} </Link>
+          <a href={`${ link.url }`} target="_blank" > { text } </a>
         </div>
       })}</div>
     </nav>
   );
 
-  const session = (
-    <>
-      { props.loggedIn ?
-        <Link to="/" onClick={props.logOut}>  Log out  </Link> :
-        <>
-          <Link to="/login">  Login  </Link>
-          <Link to="/signup">  Sign Up  </Link>
-        </>
-      }
-    </>
-  )
-
   return (
     <div>
-      <Link to="/" > Shafeh: Daily Learning  </Link>
-      {session}
+      <Header />
       {nav}
       <main >
         <Switch>
@@ -137,10 +119,12 @@ const App = function(props) {
           <Route exact path="/tikkun/online" render={() => (window.location = "https://www.sharshi.com/tikkunkorim/")} />
           <Route exact path="/github" render={() => (window.location = "https://github.com/ShafehOrg/daily-learning")} />
           <Route component={() => 404} />
+          <Link to={{ pathname: "https://example.zendesk.com/hc/en-us/articles/123456789-Privacy-Policies" }} target="_blank" />
+
         </Switch>
       </main>
     </div>
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
