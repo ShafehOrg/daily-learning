@@ -1,0 +1,14 @@
+.storybook-logo--small {
+  width: 32px;
+  height: 32px;
+}
+
+.storybook-logo--medium {
+  width: 48px;
+  height: 48px;
+}
+
+.storybook-logo--large {
+  width: 64px;
+  height: 64px;
+}
